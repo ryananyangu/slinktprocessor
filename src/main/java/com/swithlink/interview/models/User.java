@@ -11,11 +11,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.Size;
 
+import org.hibernate.envers.Audited;
+
 import lombok.Data;
 
 @Entity
 @Data
-public class User {
+@Audited
+public class User extends Auditable<String>{
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,8 +31,17 @@ public class User {
   @Column(unique = true, nullable = false)
   private String email;
 
+  @Column(unique = true, nullable = false)
+  private String phonenumber;
+
+  @Column(unique = true, nullable = false)
+  private String servicepin;
+
   @Size(min = 8, message = "Minimum password length: 8 characters")
   private String password;
+
+  @Column(unique = false, nullable = false)
+  private double balance;
 
   @ElementCollection(fetch = FetchType.EAGER)
   List<Role> roles;

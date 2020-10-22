@@ -36,8 +36,8 @@ public class Transaction {
     public Long transactionID;
 
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    public Customer customerID;
+    @ManyToOne(fetch = FetchType.EAGER)
+    public User User;
 
     public String description;
     public double amount;
