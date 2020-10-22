@@ -8,15 +8,16 @@ import lombok.Setter;
 @Setter
 public class TransactionDTO {
 
+
     @ApiModelProperty(position = 0)
-    private UserDataDTO user;
-    @ApiModelProperty(position = 1)
     private String description;
-    @ApiModelProperty(position = 2)
+    @ApiModelProperty(position = 1)
     private double amount;
-    @ApiModelProperty(position = 3)
+    @ApiModelProperty(position = 2)
     private String action;
+    @ApiModelProperty(position = 3)
+    private String channel;
     @ApiModelProperty(position = 4)
-    private String channel;   
+    private String username;   
     
 }
