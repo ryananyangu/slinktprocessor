@@ -9,14 +9,15 @@ import org.hibernate.envers.Audited;
 import lombok.Data;
 
 
-@Data
+
 @Entity
 @Audited
+@Data
 public class TellerMachine  extends Auditable<String>{
 
     @GeneratedValue
     @Id
-    public Long id;
-    public double balance;
-    public String location;
+    private Long id;
+    private double balance;
+    private String location;
 }

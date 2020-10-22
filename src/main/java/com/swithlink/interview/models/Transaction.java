@@ -27,14 +27,14 @@ public class Transaction  extends Auditable<String>{
     @GeneratedValue
     @Id
     @NonNull
-    public Long id;
+    private Long id;
 
 
     @ManyToOne(fetch = FetchType.EAGER)
-    public User User;
+    private User user;
 
-    public String description;
-    public double amount;
-    public String action;
-    public String channel;    
+    private String description;
+    private double amount;
+    private String action;
+    private String channel;    
 }

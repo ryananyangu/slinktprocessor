@@ -16,8 +16,8 @@ import org.hibernate.envers.Audited;
 import lombok.Data;
 
 @Entity
-@Data
 @Audited
+@Data
 public class User extends Auditable<String>{
 
   @Id
@@ -34,7 +34,7 @@ public class User extends Auditable<String>{
   @Column(unique = true, nullable = false)
   private String phonenumber;
 
-  @Column(unique = true, nullable = false)
+  @Column(unique = false, nullable = false)
   private String servicepin;
 
   @Size(min = 8, message = "Minimum password length: 8 characters")
