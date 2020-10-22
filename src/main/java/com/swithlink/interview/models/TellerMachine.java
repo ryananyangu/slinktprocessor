@@ -16,7 +16,7 @@ public class TellerMachine  extends Auditable<String>{
 
     @GeneratedValue
     @Id
-    public Long ATMId;
+    public Long id;
     public double balance;
-    public String number;
+    public String location;
 }

@@ -27,7 +27,7 @@ public class Transaction  extends Auditable<String>{
     @GeneratedValue
     @Id
     @NonNull
-    public Long transactionID;
+    public Long id;
 
 
     @ManyToOne(fetch = FetchType.EAGER)
