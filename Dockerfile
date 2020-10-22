@@ -7,7 +7,7 @@ RUN mkdir -p /app
 WORKDIR /app
 
 # COPY . /app
-COPY ./config ./config
+# COPY ./config ./config
 
 ADD ./target ./target
 

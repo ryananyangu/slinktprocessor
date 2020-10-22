@@ -12,13 +12,13 @@ help: ## - Show help message
 
 .PHONY: build
 build:	## - Build the smallest and secured golang docker image based on scratch (ARGS ARE APPLICATION SPECIFIC)
-	@printf "\033[32m\xE2\x9c\x93 $(VERSION) | Build the smallest and secured golang docker image based on scratch\n\033[0m"
-	@export DOCKER_CONTENT_TRUST=1 && docker build  --build-arg SECRET='$(SECRET)' -f Dockerfile -t gcr.io/$(PROJECT)/$(APPLICATION):$(VERSION) .
+	@printf "\033[32m\xE2\x9c\x93 $(VERSION) | Building the smallest and secured java docker image based on scratch\n\033[0m"
+	@docker build  --build-arg SECRET='$(SECRET)' -f Dockerfile -t gcr.io/$(PROJECT)/$(APPLICATION):$(VERSION) .
 
 .PHONY: build-no-cache
 build-no-cache:	## - Build the smallest and secured golang docker image based on scratch with no cache
 	@printf "\033[32m\xE2\x9c\x93 $(VERSION) | Build the smallest and secured golang docker image based on scratch\n\033[0m"
-	@export DOCKER_CONTENT_TRUST=1 && docker build --build-arg SECRET='$(SECRET)' --no-cache -f Dockerfile -t gcr.io/$(PROJECT)/$(APPLICATION):$(VERSION) .
+	@docker build --build-arg SECRET='$(SECRET)' --no-cache -f Dockerfile -t gcr.io/$(PROJECT)/$(APPLICATION):$(VERSION) .
 
 .PHONY: ls
 ls: ## - Listing images of the application with versions
@@ -28,4 +28,9 @@ ls: ## - Listing images of the application with versions
 .PHONY: run
 run:	## - Run the smallest and secured golang docker image based on scratch
 	@printf "\033[32m\xE2\x9c\x93 $(VERSION) | Running image outside environment\n\033[0m"
-	@docker run -p 8080:8080 gcr.io/$(PROJECT)/$(APPLICATION):$(VERSION)
+	@docker run --name $(APPLICATION) -d -p 8080:8080 gcr.io/$(PROJECT)/$(APPLICATION):$(VERSION)
+
+.PHONY: stop
+stop:
+	@printf "\033[32m\xE2\x9c\x93 $(VERSION) | Stoping contianer outside environment\n\033[0m"
+	@docker stop $(APPLICATION)
