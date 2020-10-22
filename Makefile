@@ -28,9 +28,9 @@ ls: ## - Listing images of the application with versions
 .PHONY: run
 run:	## - Run the smallest and secured golang docker image based on scratch
 	@printf "\033[32m\xE2\x9c\x93 $(VERSION) | Running image outside environment\n\033[0m"
-	@docker run --name $(APPLICATION) -d -p 8080:8080 gcr.io/$(PROJECT)/$(APPLICATION):$(VERSION)
+	@docker run --name $(APPLICATION) -p 8080:8080 gcr.io/$(PROJECT)/$(APPLICATION):$(VERSION)
 
 .PHONY: stop
 stop:
 	@printf "\033[32m\xE2\x9c\x93 $(VERSION) | Stoping contianer outside environment\n\033[0m"
-	@docker stop $(APPLICATION)
+	@docker stop $(APPLICATION) && docker rm $(APPLICATION)
