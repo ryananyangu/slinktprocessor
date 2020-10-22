@@ -35,8 +35,8 @@ public class TransactionsController {
         @ApiResponse(code = 400, message = "Something went wrong"), //
         @ApiResponse(code = 403, message = "Access denied"), //
         @ApiResponse(code = 422, message = "Username is already in use")})
-    public Transaction create(@ApiParam("New Transaction") @RequestBody TransactionDTO tDto) {
-      return transactionService.saveTransaction(modelMapper.map(tDto, Transaction.class),tDto.getUsername());
+    public String create(@ApiParam("New Transaction") @RequestBody TransactionDTO tDto) {
+      return transactionService.saveTransaction(modelMapper.map(tDto, Transaction.class),tDto.getUsername()).getDescription();
     }
     
 }
